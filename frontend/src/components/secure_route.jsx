@@ -11,7 +11,7 @@ function SecureRoute({path, component}) {
 				const C = component;
 				return <Route path={path} component={() => <C/>}/>
 			}
-			return <Redirect path={path} to='/login'/>
+			return <Redirect path={path} to={`/login?r=${path}`}/>
 		}
 	}
 	
