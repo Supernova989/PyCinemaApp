@@ -21,7 +21,7 @@ function SecureRoute({path, component}) {
 
 SecureRoute.propTypes = {
 	path: PropTypes.string.isRequired,
-	component: PropTypes.func.isRequired,
+	component: PropTypes.any.isRequired,
 };
 
 function mapStateToProps(state) {

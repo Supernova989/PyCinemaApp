@@ -1,0 +1,21 @@
+{
+	"NAVIGATION": {
+		"INDEX": "Home",
+		"SCHEDULE": "Schedule",
+		"MOVIES": "Movies",
+		"COMING_SOON": "Coming Soon"
+	},
+	"COMMON": {
+		"SIGN_IN": "Sign In",
+		"SIGN_UP": "Sign Up",
+		"CANCEL": "Cancel",
+		"OK": "Ok",
+		"NEXT": "Next",
+		"EMAIL": "Email",
+		"PASSWORD": "Password"
+	},
+	"HEADINGS": {
+
+	}
+
+}

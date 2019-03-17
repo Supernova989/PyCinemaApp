@@ -5,9 +5,11 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import {NavLink, withRouter} from 'react-router-dom';
+import {NavLink, Link, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {log_out} from "../actions";
+import i18n from '../translation';
+import { withTranslation } from 'react-i18next';
+import {log_out} from '../actions';
 
 
 class Header extends Component {
@@ -21,8 +23,10 @@ class Header extends Component {
 	};
 	
 	render() {
+		
+		const {t, i18n} = this.props;
 		return (
-			<Container>
+			<Container fluid>
 				<Row>
 					<Col sm={12}>
 						<header id='header' className='clearfix'>
@@ -30,8 +34,12 @@ class Header extends Component {
 								<b>PyCinema</b>
 							</div>
 							<div className='buttons'>
-								<Button variant='link' onClick={this.onSingInClick}>Sing In</Button>
-								<Button variant='primary' onClick={this.onSingOutClick}>Sign Up</Button>
+								<Button variant='link' onClick={this.onSingInClick}>
+									{t('COMMON.SIGN_IN')}
+								</Button>
+								<Button variant='primary' onClick={this.onSingOutClick}>
+									{t('COMMON.SIGN_UP')}
+								</Button>
 							</div>
 						</header>
 					
@@ -45,18 +53,18 @@ class Header extends Component {
 					
 					<Navbar.Collapse id="basic-navbar-nav">
 						
-						<Nav className="mr-auto">
-							<li className="nav-item active">
-								<NavLink to='/'>Home</NavLink>
+						<Nav className="mr-auto" id='navigation'>
+							<li className="nav-item">
+								<Link to='/'>{t('NAVIGATION.INDEX')}</Link>
 							</li>
 							<li className="nav-item">
-								<NavLink to='/movies'>Movies</NavLink>
+								<NavLink to='/movies'>{t('NAVIGATION.MOVIES')}</NavLink>
 							</li>
 							<li className="nav-item">
-								<NavLink to='/schedule'>Schedule</NavLink>
+								<NavLink to='/schedule'>{t('NAVIGATION.SCHEDULE')}</NavLink>
 							</li>
 							<li className="nav-item">
-								<NavLink to='/soon'>Coming Soon</NavLink>
+								<NavLink to='/soon'>{t('NAVIGATION.COMING_SOON')}</NavLink>
 							</li>
 						
 						</Nav>
@@ -74,4 +82,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(withRouter(Header));
+export default connect(mapStateToProps)(withRouter(withTranslation()(Header)));

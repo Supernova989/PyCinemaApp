@@ -1,36 +1,57 @@
-import React, {Component} from 'react';
+import React, {Component, lazy, Suspense} from 'react';
 import Header from './components/header';
+import Page404 from './pages/404.page';
 import {Switch, Route} from 'react-router-dom';
 import SecureRoute from './components/secure_route';
 
+const IndexPage = lazy(() => import('./pages/index.page'));
+const SchedulePage = lazy(() => import('./pages/schedule.page'));
+const ComingSoonPage = lazy(() => import('./pages/coming.page'));
+const LoginPage = lazy(() => import('./pages/login.page'));
+const AccountPage = lazy(() => import('./pages/account.page'));
 
 class App extends Component {
 	render() {
 		return (
 			<div className="wrapper">
 				<Header/>
-				<Switch>
-					<Route exact path='/'/>
-					<Route path='/movies'
-						   component={() => {return (<div>Movies</div>)}}/>
-					<Route path='/schedule'
-						   component={() => {return (<div>Schedule</div>)}}/>
-					<Route path='/soon'
-						   component={() => {return (<div>Coming soon</div>)}}/>
-					<Route path='/login'
-						   component={() => {return (<div>Login</div>)}}/>
-					<SecureRoute path='/profile' component={() => <ProfilePage />}/>
-					<Route  component={() => {return (<div>404</div>)}}/>
-				</Switch>
+				<Suspense fallback={<div>LOADING</div>}>
+					<Switch>
+						<Route exact path='/'
+							   component={IndexPage}
+						/>
+						<Route path='/movies'
+							   component={() => {
+								   return (<div>Movies</div>)
+							   }}/>
+						<Route path='/schedule'
+							   component={SchedulePage}/>
+						<Route path='/soon'
+							   component={ComingSoonPage}/>
+						<Route path='/login'
+							   component={LoginPage}/>
+						<SecureRoute path='/account' component={AccountPage}/>
+						<Route component={Page404}/>
+					</Switch>
+				</Suspense>
+				
+				
+				<section>
+					<svg viewBox='0 0 100 200'>
+						<g>
+							<rect width={15} height={15} x={50} y={50} rx={3} ry={3}>
+								<text x={20} y={35}>1</text>
+							</rect>
+						
+						</g>
+					
+					
+					</svg>
+				</section>
+			
 			</div>
 		);
 	}
-}
-
-function ProfilePage() {
-	return (
-		<div>Profile</div>
-	);
 }
 
 export default App;
