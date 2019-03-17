@@ -20,6 +20,7 @@ class App extends Component {
 					<Route path='/login'
 						   component={() => {return (<div>Login</div>)}}/>
 					<SecureRoute path='/profile' component={() => <ProfilePage />}/>
+					<Route  component={() => {return (<div>404</div>)}}/>
 				</Switch>
 			</div>
 		);
