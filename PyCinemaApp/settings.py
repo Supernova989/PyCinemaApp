@@ -12,7 +12,10 @@ SECRET_KEY = 'isj_f91zsieuon*87wxub#)!7@0uc2qj&b5@!=hdeo21*cwycg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+	'127.0.0.1',
+	'localhost',
+]
 
 # Application definition
 
@@ -23,6 +26,7 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+	'corsheaders',
 	'rest_framework',
 	'django_filters',
 	'schedule.apps.ScheduleConfig',
@@ -34,6 +38,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
 	'django.contrib.sessions.middleware.SessionMiddleware',
+	'corsheaders.middleware.CorsMiddleware',
 	'django.middleware.common.CommonMiddleware',
 	'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -61,6 +66,14 @@ TEMPLATES = [
 		},
 	},
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+	'http://localhost:3000',
+	'http://127.0.0.1:3000',
+	'127.0.0.1:3000',
+	'localhost:3000',
+)
 
 WSGI_APPLICATION = 'PyCinemaApp.wsgi.application'
 
@@ -108,7 +121,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static-files')  # python manage.py collectstatic
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-	os.path.join(BASE_DIR, 'frontend/build/static'),
+	os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
 ]

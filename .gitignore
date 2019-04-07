@@ -3,6 +3,8 @@
 venv/
 node_modules
 
+/static-files
+
 instance/
 
 .pytest_cache/

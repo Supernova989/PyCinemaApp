@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {connect} from 'react-redux';
+import {log_in} from '../actions';
 
 class LoginPage extends Component {
 	constructor(props) {
@@ -18,7 +20,7 @@ class LoginPage extends Component {
 	
 	onSubmit = (event) => {
 		event.preventDefault();
-		console.log('Submitting form!');
+		this.props.dispatch(log_in(this.state.email,this.state.password));
 	};
 	
 	render() {
@@ -58,4 +60,4 @@ class LoginPage extends Component {
 	}
 }
 
-export default LoginPage;
+export default connect()(LoginPage);
