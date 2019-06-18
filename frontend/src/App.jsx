@@ -37,16 +37,15 @@ class App extends Component {
 				
 				
 				<section>
-					<svg viewBox='0 0 100 200'>
-						<g>
-							<rect width={15} height={15} x={50} y={50} rx={3} ry={3}>
-								<text x={20} y={35}>1</text>
-							</rect>
-						
-						</g>
-					
-					
-					</svg>
+					{/*<svg viewBox='0 0 100 200'>*/}
+					{/*	<g>*/}
+					{/*		<rect width={15} height={15} x={50} y={50} rx={3} ry={3}>*/}
+					{/*			<text x={20} y={35}>1</text>*/}
+					{/*		</rect>*/}
+					{/*	*/}
+					{/*	</g>*/}
+					{/*	*/}
+					{/*</svg>*/}
 				</section>
 			
 			</div>

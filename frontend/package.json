@@ -27,7 +27,8 @@
 		"react-test-renderer": "16.8.6",
 		"redux": "4.0.1",
 		"redux-logger": "3.0.6",
-		"redux-thunk": "2.3.0"
+		"redux-thunk": "2.3.0",
+		"typescript": "^3.5.2"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -36,8 +37,8 @@
 		"eject": "react-scripts eject"
 	},
 	"resolutions": {
-    	"caniuse-lite": "1.0.30000974"
-  	},
+		"caniuse-lite": "1.0.30000974"
+	},
 	"eslintConfig": {
 		"extends": "react-app"
 	},
