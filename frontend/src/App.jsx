@@ -5,6 +5,7 @@ import {Switch, Route} from 'react-router-dom';
 import SecureRoute from './components/secure_route';
 
 const IndexPage = lazy(() => import('./pages/index.page'));
+const MoviesPage = lazy(() => import('./pages/movies.page'));
 const SchedulePage = lazy(() => import('./pages/schedule.page'));
 const ComingSoonPage = lazy(() => import('./pages/coming.page'));
 const LoginPage = lazy(() => import('./pages/login.page'));
@@ -21,9 +22,7 @@ class App extends Component {
 							   component={IndexPage}
 						/>
 						<Route path='/movies'
-							   component={() => {
-								   return (<div>Movies</div>)
-							   }}/>
+							   component={MoviesPage}/>
 						<Route path='/schedule'
 							   component={SchedulePage}/>
 						<Route path='/soon'

@@ -1,4 +1,4 @@
-import {api_query} from '../lib/shared';
+import {api_query, debug} from "../lib/shared";
 import {create_action} from "../lib/action";
 import {Movie} from "../lib/movie";
 import * as types from './types';
@@ -6,7 +6,7 @@ import {AxiosError, AxiosResponse} from "axios";
 
 export const log_in = (email: string, password: string) => {
 	return (dispatch: Function) => {
-		return api_query('POST', '/api/authentication', {email, password})
+		return api_query('POST', '/authentication', {email, password})
 			.then((response: AxiosResponse) => {
 				console.log(response);
 			})
@@ -29,7 +29,7 @@ export function set_movies(movies: Movie[]) {
  */
 export function get_movies(page: number) {
 	return (dispatch: Function) => {
-		return api_query('GET', `/api/movies/${page}`, {})
+		return api_query('GET', `/movies`, {})
 			.then((response: AxiosResponse) => {
 				const movies: Movie[] = response.data;
 				dispatch(set_movies(movies));

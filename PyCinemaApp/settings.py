@@ -1,4 +1,5 @@
 import os
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -36,10 +37,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-	'django.middleware.security.SecurityMiddleware',
-	'django.contrib.sessions.middleware.SessionMiddleware',
 	'corsheaders.middleware.CorsMiddleware',
 	'django.middleware.common.CommonMiddleware',
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.middleware.security.SecurityMiddleware',
 	'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
@@ -67,12 +68,21 @@ TEMPLATES = [
 	},
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_HEADERS = default_headers + (
+	'X-PASS',
+)
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
+	'http://localhost:8000',
 	'http://localhost:3000',
 	'http://127.0.0.1:3000',
+	'http://127.0.0.1:8000',
 	'127.0.0.1:3000',
+	'127.0.0.1:8000',
 	'localhost:3000',
+	'localhost:8000',
 )
 
 WSGI_APPLICATION = 'PyCinemaApp.wsgi.application'

@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from movies.views import MovieView
 from rest_framework import routers
 
-router = routers.DefaultRouter()
+router = routers.DefaultRouter(trailing_slash=False)
 router.register('movies', MovieView)
 
 urlpatterns = [

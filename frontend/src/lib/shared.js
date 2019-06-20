@@ -11,6 +11,7 @@ export function api_query(method, url, data) {
 		method,
 		url: process.env.REACT_APP_API + url,
 		// crossDomain: true,
+		// credentials: true,
 		headers: {
 			'X-PASS': 'web-application',
 			'Authorization': getToken(),
@@ -32,4 +33,12 @@ export function getToken(pure = false) {
 		token = `Bearer ${token}`;
 	}
 	return token;
+}
+
+
+export function debug(str, obj = undefined) {
+	console.log(str);
+	if  (obj) {
+		console.log(obj);
+	}
 }
