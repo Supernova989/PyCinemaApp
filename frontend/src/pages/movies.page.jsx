@@ -12,12 +12,12 @@ class MoviesPage extends Component {
 	render() {
 		return (
 			<>
-				<h1>Movies</h1>
+				<h1 className="page-title">Movies</h1>
 				
-				<ul>
+				<ul className='movie-list-full'>
 					{this.props.movies.items.map((movie) => {
 						return (
-							<li key={movie.id}>
+							<li key={movie.id} className='movie-list-item'>
 								<MovieCard movie={movie}/>
 							</li>
 						)
@@ -29,7 +29,9 @@ class MoviesPage extends Component {
 }
 
 MoviesPage.propTypes = {
-	movies: PropTypes.array.isRequired,
+	movies: PropTypes.shape({
+		items: PropTypes.array
+	}).isRequired,
 };
 
 function mapStateToProps(state) {

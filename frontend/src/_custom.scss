@@ -1,13 +1,21 @@
 /* ####################################################### */
 // Bootstrap override:
 
+
+$breakPointXS: 0px;
+$breakPointSM: 576px;
+$breakPointMD: 768px;
+$breakPointLG: 914px;
+$breakPointXL: 992px;
+
+
 $grid-gutter-width: 20px;
 $grid-breakpoints: (
-		xs: 0,
-		sm: 576px,
-		md: 768px,
-		lg: 914px,
-		xl: 992px,
+		xs: $breakPointXS,
+		sm: $breakPointSM,
+		md: $breakPointMD,
+		lg: $breakPointLG,
+		xl: $breakPointXL,
 );
 $container-max-widths: (
 		sm: 540px,
@@ -24,3 +32,7 @@ button, input, textarea {
 }
 
 @import "~bootstrap/scss/bootstrap";
+
+body {
+	background: #000000 url("./img/bg-body.png");
+}

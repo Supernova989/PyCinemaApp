@@ -3,8 +3,22 @@
 /* ##################################################### */
 // Global App variables:
 
-$headerMTop: 0.5rem;
-$headerMBottom: 0.5rem;
+$headerInnerMTop: 0.5rem;
+$headerInnerMBottom: 0.5rem;
+$movieCardHeightLG: 755px;
+$movieCardHeightMD: 600px;
+$movieCardHeightSM: 300px;
+
+
+/* #######################################################
+Helpers
+####################################################### */
+
+.clearfix::before, .clearfix::after {
+	display: table;
+	clear: both;
+	content: "";
+}
 
 
 /* #######################################################
@@ -12,24 +26,46 @@ Header
 ####################################################### */
 
 #header {
-	margin: $headerMTop 0 $headerMBottom 0;
-	display: flex;
+	margin: 0;
 	width: 100%;
-	align-items: center;
+	padding: 36px 0 42px 0;
+	background: url('./img/bg-header.png') repeat-x;
+	height: 184px;
+	
+	.inner {
+		margin: $headerInnerMTop 0 $headerInnerMBottom 0;
+		padding: 28px 0 0;
+		position: relative;
+		width: 960px;
+	}
+	
+	.menu-wrap {
+		width: 100%;
+	}
 	
 	.app-title {
-		flex-grow: 1;
+		font-family: cursive;
+		font-size: 3rem;
+		text-align: center;
+		line-height: 3.3rem;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
+	
 	.buttons {
 	
 	}
 }
+
 
 #navigation {
 	
 	li {
 		padding: 0 5px 0 5px;
 	}
+	
 	li > a {
 	
 	}
@@ -38,3 +74,69 @@ Header
 /* #######################################################
 Content
 ####################################################### */
+
+
+#body {
+	color: #FFFFFF;
+	border: 1px solid #4f4f4f;
+	margin-top: 1.2rem;
+}
+
+.page-title {
+	padding: 0.4rem;
+}
+
+/* #######################################################
+Content - Movies
+####################################################### */
+
+.movie-list-full {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 0;
+	list-style: none;
+}
+
+.movie-card {
+	border: 1px solid #4f4f4f;
+	height: $movieCardHeightLG;
+	margin-bottom: 0.3rem;
+	
+	.img-wrap {
+		
+		img {
+			max-width: 100%;
+		}
+	}
+	
+	.title {
+		padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+	}
+	
+	.description {
+		padding: 0.3rem;
+	}
+}
+
+.movie-list-full .movie-list-item {
+	width: 25%;
+}
+
+@media (max-width: $breakPointMD) {
+	.movie-list-full .movie-list-item {
+		width: 50%;
+	}
+	.movie-card {
+		height: $movieCardHeightMD;
+	}
+}
+
+@media (max-width: $breakPointSM) {
+	.movie-list-full .movie-list-item {
+		width: 100%;
+	}
+	.movie-card {
+		height: $movieCardHeightSM;
+	}
+}

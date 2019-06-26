@@ -136,3 +136,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
 ]
+
+# MEDIA_ROOT_DIRS = os.path.join(BASE_DIR, 'frontend', 'build', 'static').replace('\\', '/')
+MEDIA_ROOT_DIRS = os.path.join(BASE_DIR, 'img')
+MEDIA_URL = '/media/'

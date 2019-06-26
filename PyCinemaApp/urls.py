@@ -9,9 +9,10 @@ from rest_framework import routers
 router = routers.DefaultRouter(trailing_slash=False)
 router.register('movies', MovieView)
 
+_static = static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 urlpatterns = [
 	path('admin/', admin.site.urls),
 	path('', IndexPage),
 	path('api/', include(router.urls)),
-	re_path(r'^(?:.*)/?$', IndexPage),  # Fallback
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + _static + [re_path(r'^(?:.*)/?$', IndexPage)]

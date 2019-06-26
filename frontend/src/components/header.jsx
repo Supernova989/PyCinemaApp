@@ -1,18 +1,13 @@
-import React, {Component} from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import React from 'react';
 import {NavLink, Link, withRouter} from 'react-router-dom';
+import {Container, Row, Col} from 'reactstrap';
 import {connect} from 'react-redux';
 import i18n from '../translation';
-import { withTranslation } from 'react-i18next';
+import {withTranslation} from 'react-i18next';
 import {log_out} from '../actions';
 
 
-class Header extends Component {
+class Header extends React.Component {
 	
 	onSingOutClick = () => {
 		this.props.dispatch(log_out());
@@ -26,52 +21,49 @@ class Header extends Component {
 		
 		const {t, i18n} = this.props;
 		return (
-			<Container fluid>
-				<Row>
-					<Col sm={12}>
-						<header id='header' className='clearfix'>
+			<header id='header' className='clearfix'>
+				
+				<Container fluid={true}>
+					<Row>
+						<Col sm={12}>
 							<div className='app-title'>
-								<b>PyCinema</b>
+								<b>AMC Theater</b>
 							</div>
-							<div className='buttons'>
-								<Button variant='link' onClick={this.onSingInClick}>
-									{t('COMMON.SIGN_IN')}
-								</Button>
-								<Button variant='primary' onClick={this.onSingOutClick}>
-									{t('COMMON.SIGN_UP')}
-								</Button>
-							</div>
-						</header>
+						</Col>
+					</Row>
+				</Container>
+				<Container className='inner'>
 					
-					</Col>
+					<Row>
+						<Col sm={12}>
+							<ul>
+								<li className="nav-item">
+									<Link to='/'>{t('NAVIGATION.INDEX')}</Link>
+								</li>
+								<li className="nav-item">
+									<NavLink to='/movies'>{t('NAVIGATION.MOVIES')}</NavLink>
+								</li>
+								<li className="nav-item">
+									<NavLink to='/schedule'>{t('NAVIGATION.SCHEDULE')}</NavLink>
+								</li>
+								<li className="nav-item">
+									<NavLink to='/soon'>{t('NAVIGATION.COMING_SOON')}</NavLink>
+								</li>
+							</ul>
+						</Col>
+					</Row>
+				</Container>
 				
-				</Row>
 				
-				<Navbar expand="md">
-					
-					<Navbar.Toggle aria-controls="basic-navbar-nav"/>
-					
-					<Navbar.Collapse id="basic-navbar-nav">
-						
-						<Nav className="mr-auto" id='navigation'>
-							<li className="nav-item">
-								<Link to='/'>{t('NAVIGATION.INDEX')}</Link>
-							</li>
-							<li className="nav-item">
-								<NavLink to='/movies'>{t('NAVIGATION.MOVIES')}</NavLink>
-							</li>
-							<li className="nav-item">
-								<NavLink to='/schedule'>{t('NAVIGATION.SCHEDULE')}</NavLink>
-							</li>
-							<li className="nav-item">
-								<NavLink to='/soon'>{t('NAVIGATION.COMING_SOON')}</NavLink>
-							</li>
-						
-						</Nav>
-					</Navbar.Collapse>
-				</Navbar>
-			
-			</Container>
+				{/*<div className='buttons'>*/}
+				{/*	<Button variant='link' onClick={this.onSingInClick}>*/}
+				{/*		{t('COMMON.SIGN_IN')}*/}
+				{/*	</Button>*/}
+				{/*	<Button variant='primary' onClick={this.onSingOutClick}>*/}
+				{/*		{t('COMMON.SIGN_UP')}*/}
+				{/*	</Button>*/}
+				{/*</div>*/}
+			</header>
 		)
 	}
 }
