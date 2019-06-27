@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import LazyLoad from 'react-lazy-load';
 
 function MovieCard(props) {
 	const {
@@ -13,7 +14,9 @@ function MovieCard(props) {
 		<article className='movie-card'>
 			<div className="img-wrap">
 				<Link to={'/movies/' + id}>
-					<img src={process.env.REACT_APP_HOST + image}/>
+					<LazyLoad height={370}>
+						<img src={process.env.REACT_APP_HOST + image}/>
+					</LazyLoad>
 				</Link>
 			</div>
 			<div className="title">
